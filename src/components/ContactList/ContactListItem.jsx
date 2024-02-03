@@ -3,7 +3,7 @@ import { apiRemoveContact } from '../../redux/contactsSlice';
 
 import css from './ContactListItem.module.css';
 
-const ContactListItem = ({ name, number, id }) => {
+const ContactListItem = ({ name, phone, id }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContacts = profileId => {
@@ -12,7 +12,7 @@ const ContactListItem = ({ name, number, id }) => {
 
   return (
     <li className={css.itemLi}>
-      {name}: {number}
+      {name}: {phone}
       <button
         onClick={() => handleDeleteContacts(id)}
         type="button"

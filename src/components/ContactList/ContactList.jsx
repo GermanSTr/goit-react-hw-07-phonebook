@@ -1,10 +1,20 @@
+import { useEffect } from 'react';
+
 import { ContactListItem } from './ContactListItem';
+
+import { useDispatch, useSelector } from 'react-redux';
+
 import { selectContacts, selectFilter } from '../../redux/selector';
-import { useSelector } from 'react-redux';
+import { apiGetContact } from '../../redux/contactsSlice';
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const state = useSelector(selectFilter);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(apiGetContact());
+  }, [dispatch]);
 
   const filterContacts = contacts.filter(profile =>
     profile.name.toLowerCase().includes(state.trim().toLowerCase())

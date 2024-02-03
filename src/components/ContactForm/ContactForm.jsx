@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { apiAddContact } from '../../redux/contactsSlice';
 import { selectContacts } from '../../redux/selector';
 
-import { v4 as uuidv4 } from 'uuid';
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
@@ -26,8 +25,7 @@ export const ContactForm = () => {
       alert(`${formData.name} is already in contacts`);
       return;
     }
-    const contactData = { ...formData, id: uuidv4() };
-    dispatch(addContact(contactData));
+    dispatch(apiAddContact(formData));
   };
 
   return (
